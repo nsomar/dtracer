@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'request_tracer/cli'
+
+RequestTracer::CLI.start
