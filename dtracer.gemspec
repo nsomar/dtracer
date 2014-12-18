@@ -1,16 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'request_tracer/version'
+require 'dtracer/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "request_tracer"
-  spec.version       = RequestTracer::VERSION
+  spec.name          = "dtracer"
+  spec.version       = DTracer::VERSION
   spec.authors       = ["Omar Abdelhafith"]
-  spec.email         = ["omar.abdelhafith@mttnow.com"]
-  spec.summary       = %q{Write a short summary. Required.}
-  spec.description   = %q{Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.email         = ["o.arrabi@me.com"]
+  spec.summary       = %q{DTracer is part ruby gem, part iOS pod, that helps the sending and receiving of DTrace commands..}
+  spec.description   = %q{DTracer is part ruby gem, part iOS pod, that helps the sending and receiving of DTrace commands.
+The `dtracer` gem will listen to the DTrace commands that are sent from the [OADTraceSender]() pod.}
+  spec.homepage      = "www.nsomar.com"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

@@ -1,14 +1,10 @@
 require 'thor'
-require 'request_tracer'
-require 'request_tracer/builder'
+require 'dtracer'
 require 'tempfile'
 require 'json'
-require 'request_tracer/probe_listener'
-require 'request_tracer/request_formatters'
-require 'request_tracer/response_formatters'
 
-class RequestTracer::CLI < Thor
-  package_name :tracer
+class DTracer::CLI < Thor
+  package_name :dtracer
 
   option :r, :aliases => ["--response"], :type => :boolean, desc: "include the request response"
   desc "curl", "register a curl probe"
@@ -16,7 +12,12 @@ class RequestTracer::CLI < Thor
   def curl
     say "Starting dtrace", :green
 
-    t1 = Thread.new { add_curl_probe }
+    t1 = Thread.new do
+      ProbeListener.new("request", true).listen do |hash|
+        puts RequestCurlFormatter.new(hash).to_s
+      end
+    end
+
     t2 = Thread.new do
       sleep(0.3)
       add_response_probe if options[:r]
@@ -46,7 +47,12 @@ class RequestTracer::CLI < Thor
 
     say "Starting dtrace", :green
 
-    t1 = Thread.new { add_detailed_probe }
+    t1 = Thread.new do
+      ProbeListener.new("request", true).listen do |hash|
+        puts RequestDetailsFormatter.new(hash, options || {}).to_s
+      end
+    end
+
     t2 = Thread.new do
       sleep(0.3)
       add_response_probe if options[:r]
@@ -87,24 +93,6 @@ class RequestTracer::CLI < Thor
 
 
   private
-
-  def add_detailed_probe
-    probe = ProbeListener.new("request", true)
-
-    probe.listen do |hash|
-      formatter = RequestDetailsFormatter.new(hash, options || {})
-      puts formatter.to_s
-    end
-  end
-
-  def add_curl_probe
-    probe = ProbeListener.new("request", true)
-
-    probe.listen do |hash|
-      formatter = RequestCurlFormatter.new(hash)
-      puts formatter.to_s
-    end
-  end
 
   def add_response_probe
     probe = ProbeListener.new("response", true)

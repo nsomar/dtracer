@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in request-tracer.gemspec
+# Specify your gem's dependencies in dtracer.gemspec
 gemspec

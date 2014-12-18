@@ -1,4 +1,5 @@
 class ResponseFormatter
+
   def initialize(hash)
     @hash = hash
     generate
@@ -36,21 +37,15 @@ class ResponseFormatter
   end
 
   def header_section(hash)
-    return nil unless hash[:h]
+    return nil unless hash["headers"]
 
-    arr = []
-    arr << "Headers:"
-    hash["headers"].each { |k| arr << "  #{k["field"]}: #{k["value"]}" }
-    arr
+    hash["headers"].map { |key, value| "  #{key}: #{value}" }.insert(0, "Headers:")
   end
 
   def cookie_section(hash)
     return nil unless hash["cookies"]
 
-    arr = []
-    arr << "Cookies:"
-    hash["cookies"].each { |k| arr << "  #{k["name"]}: #{k["value"]}" }
-    arr
+    hash["cookies"].map { |name, value| "  #{name}: #{value}" }.insert(0, "Cookies:")
   end
 
   def body_section(hash)
@@ -71,4 +66,5 @@ class ResponseFormatter
   def to_s
     @content
   end
+
 end

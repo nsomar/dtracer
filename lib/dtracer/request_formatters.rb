@@ -50,21 +50,13 @@ class RequestCurlFormatter
   def header_section(hash)
     return nil unless hash["headers"]
 
-    arr = []
-    hash["headers"].each do |key, value|
-      arr << "-H '#{key}: #{value}'"
-    end
-    arr
+    hash["headers"].map { |key, value| "-H '#{key}: #{value}'" }
   end
 
   def cookie_section(hash)
     return nil unless hash["cookies"]
 
-    arr = []
-    hash["cookies"].each do |name, value|
-      arr << "--cookie \"#{name}=#{value}\""
-    end
-    arr
+    hash["cookies"].map { |name, value| "--cookie \"#{name}=#{value}\"" }
   end
 
   def body_section(hash)
@@ -106,19 +98,13 @@ class RequestDetailsFormatter
   def header_section(hash)
     return nil unless @options[:h] && hash["headers"]
 
-    arr = []
-    arr << "Headers:"
-    hash["headers"].each { |k| arr << "  #{k["field"]}: #{k["value"]}" }
-    arr
+    hash["headers"].map { |key, value| "  #{key}: #{value}" }.insert(0, "Headers:")
   end
 
   def cookie_section(hash)
     return nil unless @options[:c] && hash["cookies"]
 
-    arr = []
-    arr << "Cookies:"
-    hash["cookies"].each { |k| arr << "  #{k["name"]}: #{k["value"]}" }
-    arr
+    hash["cookies"].map { |name, value| "  #{name}: #{value}" }.insert(0, "Cookies:")
   end
 
   def body_section(hash)

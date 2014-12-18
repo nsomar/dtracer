@@ -12,8 +12,6 @@ class ProbeListener
     write_probe
     cmd = "sudo dtrace -s #{trace_file_path}"
 
-
-
     IO.popen(cmd) do |stdout|
       stdout.each do |line|
 
@@ -42,7 +40,7 @@ class ProbeListener
   end
 
   def probe_string(name)
-    builder = RequestTracer::Builder.new
+    builder = DTracer::Builder.new
     builder.add_options(true)
 
     builder.add_begin_probe
