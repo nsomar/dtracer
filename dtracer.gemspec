@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{DTracer is part ruby gem, part iOS pod, that helps the sending and receiving of DTrace commands..}
   spec.description   = %q{DTracer is part ruby gem, part iOS pod, that helps the sending and receiving of DTrace commands.
 The `dtracer` gem will listen to the DTrace commands that are sent from the [OADTraceSender]() pod.}
-  spec.homepage      = "www.nsomar.com"
+  spec.homepage      = "http://nsomar.com/dtracer"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

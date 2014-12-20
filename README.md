@@ -57,8 +57,11 @@ In case you have the need to send any arbitrary string, then use `dtracer custom
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/drequest-tracer/fork )
+1. Fork it ( https://github.com/oarrabi/dtracer/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+## Tests
+[Yes! ](https://github.com/oarrabi/dtracer/tree/master/spec)
