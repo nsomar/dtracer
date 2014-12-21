@@ -33,9 +33,8 @@ class DTracer::CLI < Thor
   option :b, :aliases => ["--body"], :type => :boolean, desc: "show the http body"
   option :m, :aliases => ["--method"], :type => :boolean, desc: "show the http method"
   option :u, :aliases => ["--url"], :type => :boolean, desc: "show the http url"
-  option :h, :aliases => ["--headers"], :type => :boolean, desc: "show the http url"
-  option :c, :aliases => ["--cookies"], :type => :boolean, desc: "show the http url"
-  option :q, :aliases => ["--quiet"], :type => :boolean, desc: "show the http url"
+  option :h, :aliases => ["--headers"], :type => :boolean, desc: "show the http headers"
+  option :c, :aliases => ["--cookies"], :type => :boolean, desc: "show the http cookies"
   option :r, :aliases => ["--response"], :type => :boolean, desc: "include the request response"
   desc "details", "register a curl probe"
 
