@@ -1,5 +1,5 @@
 require "open3"
-
+require 'dtracer/builder'
 class ProbeListener
 
   def initialize(name, is_hash)
