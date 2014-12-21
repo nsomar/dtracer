@@ -1,5 +1,7 @@
 # DTracer
 
+[![Build Status](https://travis-ci.org/oarrabi/dtracer.svg?branch=master)](https://travis-ci.org/oarrabi/dtracer)
+
 DTracer is part ruby gem, part iOS pod, that helps the sending and receiving of DTrace commands.
 The `dtracer` gem will listen to the DTrace commands that are sent from the [OADTraceSender]() pod.
 
